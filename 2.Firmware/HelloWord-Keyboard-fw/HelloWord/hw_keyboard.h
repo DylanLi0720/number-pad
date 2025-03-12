@@ -3,7 +3,6 @@
 
 #include "spi.h"
 
-
 class HWKeyboard
 {
 public:
@@ -21,10 +20,14 @@ public:
     }
 
 
-    static const uint8_t IO_NUMBER = 11 * 8; // Used 11 pcs 74HC165
-    static const uint8_t KEY_NUMBER = 82;
-    static const uint8_t TOUCHPAD_NUMBER = 6;
-    static const uint8_t LED_NUMBER = 104;
+    // static const uint8_t IO_NUMBER = 11 * 8; // Used 11 pcs 74HC165
+    static const uint8_t IO_NUMBER = 8; // Used 11 pcs 74HC165
+    // static const uint8_t KEY_NUMBER = 82;
+    static const uint8_t KEY_NUMBER = 8;
+    // static const uint8_t TOUCHPAD_NUMBER = 6;
+    static const uint8_t TOUCHPAD_NUMBER = 0;
+    // static const uint8_t LED_NUMBER = 104;
+    static const uint8_t LED_NUMBER = 7;
     static const uint16_t KEY_REPORT_SIZE = 1 + 16;
     static const uint16_t RAW_REPORT_SIZE = 1 + 32;
     static const uint16_t HID_REPORT_SIZE = KEY_REPORT_SIZE + RAW_REPORT_SIZE;
@@ -35,7 +38,7 @@ public:
         LEFT_CTRL = -8,LEFT_SHIFT = -7,LEFT_ALT = -6,LEFT_GUI = -5,
         RIGHT_CTRL = -4,RIGHT_SHIFT = -3,RIGHT_ALT = -2,RIGHT_GUI = -1,
 
-        RESERVED = 0,ERROR_ROLL_OVER,POST_FAIL,ERROR_UNDEFINED,
+        RESERVED = 0,ERROR_ROLL_OVER,POST_FAIL, ERROR_UNDEFINED,
         A,B,C,D,E,F,G,H,I,J,K,L,M,
         N,O,P,Q,R,S,T,U,V,W,X,Y,Z,
         NUM_1/*1!*/,NUM_2/*2@*/,NUM_3/*3#*/,NUM_4/*4$*/,NUM_5/*5%*/,
@@ -80,30 +83,31 @@ public:
     uint8_t* GetHidReportBuffer(uint8_t _reportId);
     uint8_t  GetTouchBarState(uint8_t _id = 0);
     void SetRgbBufferByID(uint8_t _keyId, Color_t _color, float _brightness = 1);
-
-
     int16_t keyMap[5][IO_NUMBER] = {
-        {67,61,60,58,59,52,55,51,50,49,48,47,46,3,
-            80,81,64,57,62,63,53,54,45,44,40,31,26,18,2,
-            19,70,71,66,65,56,36,37,38,39,43,42,41,28,1,
-            15,74,73,72,68,69,29,30,35,34,33,32,24,0,
-            14,76,77,78,79,16,20,21,22,23,27,25,17,4,
-            13,12,8,75,9,10,7,11,6,5,
-            86,84,82,87,85,83}, // TouchBar index
+        {0,1,2,3,4,5,6,7},
+{ PASTE,S,Z,LEFT_CTRL,C,V,
+        PAD_NUM_1,K}
+        // {67,61,60,58,59,52,55,51,50,49,48,47,46,3,
+        //     80,81,64,57,62,63,53,54,45,44,40,31,26,18,2,
+        //     19,70,71,66,65,56,36,37,38,39,43,42,41,28,1,
+        //     15,74,73,72,68,69,29,30,35,34,33,32,24,0,
+        //     14,76,77,78,79,16,20,21,22,23,27,25,17,4,
+        //     13,12,8,75,9,10,7,11,6,5,
+        //     86,84,82,87,85,83}, // TouchBar index
 
-        {ESC,F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,PAUSE,
-            GRAVE_ACCENT,NUM_1,NUM_2,NUM_3,NUM_4,NUM_5,NUM_6,NUM_7,NUM_8,NUM_9,NUM_0,MINUS,EQUAL,BACKSPACE,INSERT,
-            TAB,Q,W,E,R,T,Y,U,I,O,P,LEFT_U_BRACE,RIGHT_U_BRACE,BACKSLASH,DELETE,
-            CAP_LOCK,A,S,D,F,G,H,J,K,L,SEMI_COLON,QUOTE,ENTER,PAGE_UP,
-            LEFT_SHIFT,Z,X,C,V,B,N,M,COMMA,PERIOD,SLASH,RIGHT_SHIFT,UP_ARROW,PAGE_DOWN,
-            LEFT_CTRL,LEFT_GUI,LEFT_ALT,SPACE,RIGHT_ALT,FN,RIGHT_CTRL,LEFT_ARROW,DOWN_ARROW,RIGHT_ARROW },
-
-        {ESC,F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,PAUSE,
-            GRAVE_ACCENT,NUM_1,NUM_2,NUM_3,NUM_4,NUM_5,NUM_6,NUM_7,NUM_8,NUM_9,NUM_0,MINUS,EQUAL,BACKSPACE,INSERT,
-            TAB,A,B,C,D,E,F,G,H,I,J,LEFT_U_BRACE,RIGHT_U_BRACE,BACKSLASH,DELETE,
-            CAP_LOCK,K,L,M,N,O,P,Q,R,S,SEMI_COLON,QUOTE,ENTER,PAGE_UP,
-            LEFT_SHIFT,T,U,V,W,X,Y,Z,COMMA,PERIOD,SLASH,RIGHT_SHIFT,A,PAGE_DOWN,
-            LEFT_CTRL,LEFT_GUI,LEFT_ALT,SPACE,RIGHT_ALT,FN,RIGHT_CTRL,LEFT_ARROW,DOWN_ARROW,RIGHT_ARROW }
+        // {ESC,F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,PAUSE,
+        //     GRAVE_ACCENT,NUM_1,NUM_2,NUM_3,NUM_4,NUM_5,NUM_6,NUM_7,NUM_8,NUM_9,NUM_0,MINUS,EQUAL,BACKSPACE,INSERT,
+        //     TAB,Q,W,E,R,T,Y,U,I,O,P,LEFT_U_BRACE,RIGHT_U_BRACE,BACKSLASH,DELETE,
+        //     CAP_LOCK,A,S,D,F,G,H,J,K,L,SEMI_COLON,QUOTE,ENTER,PAGE_UP,
+        //     LEFT_SHIFT,Z,X,C,V,B,N,M,COMMA,PERIOD,SLASH,RIGHT_SHIFT,UP_ARROW,PAGE_DOWN,
+        //     LEFT_CTRL,LEFT_GUI,LEFT_ALT,SPACE,RIGHT_ALT,FN,RIGHT_CTRL,LEFT_ARROW,DOWN_ARROW,RIGHT_ARROW },
+        //
+        // {ESC,F1,F2,F3,F4,F5,F6,F7,F8,F9,F10,F11,F12,PAUSE,
+        //     GRAVE_ACCENT,NUM_1,NUM_2,NUM_3,NUM_4,NUM_5,NUM_6,NUM_7,NUM_8,NUM_9,NUM_0,MINUS,EQUAL,BACKSPACE,INSERT,
+        //     TAB,A,B,C,D,E,F,G,H,I,J,LEFT_U_BRACE,RIGHT_U_BRACE,BACKSLASH,DELETE,
+        //     CAP_LOCK,K,L,M,N,O,P,Q,R,S,SEMI_COLON,QUOTE,ENTER,PAGE_UP,
+        //     LEFT_SHIFT,T,U,V,W,X,Y,Z,COMMA,PERIOD,SLASH,RIGHT_SHIFT,A,PAGE_DOWN,
+        //     LEFT_CTRL,LEFT_GUI,LEFT_ALT,SPACE,RIGHT_ALT,FN,RIGHT_CTRL,LEFT_ARROW,DOWN_ARROW,RIGHT_ARROW }
     };
 
     volatile bool isRgbTxBusy;

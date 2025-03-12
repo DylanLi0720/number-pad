@@ -71,7 +71,7 @@ uint8_t* HWKeyboard::Remap(uint8_t _layer)
     memset(hidBuffer, 0, KEY_REPORT_SIZE);
 
     int i = 0, j = 0;
-    while (8 * i + j < IO_NUMBER - 6)
+    while (8 * i + j < IO_NUMBER - TOUCHPAD_NUMBER)
     {
         for (j = 0; j < 8; j++)
         {
@@ -97,7 +97,8 @@ uint8_t* HWKeyboard::Remap(uint8_t _layer)
 
 bool HWKeyboard::FnPressed()
 {
-    return remapBuffer[9] & 0x02;
+    // return true;
+    return remapBuffer[0] & 0x80;
 }
 
 
@@ -165,36 +166,49 @@ bool HWKeyboard::KeyPressed(KeyCode_t _key)
 
 void HWKeyboard::Press(HWKeyboard::KeyCode_t _key)
 {
-    int index, bitIndex;
+    int16_t index, bitIndex;
 
-    if (_key < RESERVED)
+    // if (_key < RESERVED)
+    // {
+    //     index = _key / 8;
+    //     bitIndex = (_key + 8) % 8;
+    // } else
+    // {
+    //     index = _key / 8 + 1;
+    //     bitIndex = _key % 8;
+    // }
+    index = (int16_t) (_key / 8 + 1); // +1 for modifier
+    bitIndex = (int16_t) (_key % 8);
+    if (bitIndex < 0)
     {
-        index = _key / 8;
-        bitIndex = (_key + 8) % 8;
-    } else
-    {
-        index = _key / 8 + 1;
-        bitIndex = _key % 8;
+        index -= 1;
+        bitIndex += 8;
     }
-
     hidBuffer[index + 1] |= (1 << bitIndex);
 }
 
 
 void HWKeyboard::Release(HWKeyboard::KeyCode_t _key)
 {
-    int index, bitIndex;
+    int16_t index, bitIndex;
 
-    if (_key < RESERVED)
+    // if (_key < RESERVED)
+    // {
+    //     index = _key / 8;
+    //     bitIndex = (_key + 8) % 8;
+    // } else
+    // {
+    //     index = _key / 8 + 1;
+    //     bitIndex = _key % 8;
+    // }
+
+    index = (int16_t) (_key / 8 + 1); // +1 for modifier
+    bitIndex = (int16_t) (_key % 8);
+    if (bitIndex < 0)
     {
-        index = _key / 8;
-        bitIndex = (_key + 8) % 8;
-    } else
-    {
-        index = _key / 8 + 1;
-        bitIndex = _key % 8;
+        index -= 1;
+        bitIndex += 8;
     }
-
     hidBuffer[index + 1] &= ~(1 << bitIndex);
 }
 
