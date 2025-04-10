@@ -87,7 +87,7 @@ extern "C" void OnTimerCallback() // 1000Hz callback
         // or trigger some keys...
         // keyboard.Press(HWKeyboard::LEFT_CTRL);
         // keyboard.Press(HWKeyboard::V);
-        isSoftWareControlColor = !isSoftWareControlColor;
+        // isSoftWareControlColor = !isSoftWareControlColor;
     }
     // Report HID key states
     USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS,

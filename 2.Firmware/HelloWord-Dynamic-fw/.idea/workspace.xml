@@ -1,8 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="CMakePresetLoader"><![CDATA[{
-  "useNewFormat": true
-}]]></component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="BackendCodeEditorMiscSettings">
+    <option name="/Default/RiderDebugger/RiderRestoreDecompile/RestoreDecompileSetting/@EntryValue" value="false" type="bool" />
+    <option name="/Default/Housekeeping/GlobalSettingsUpgraded/IsUpgraded/@EntryValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexedValue" value="true" type="bool" />
+    <option name="/Default/Housekeeping/FeatureSuggestion/FeatureSuggestionManager/DisabledSuggesters/=SwitchToGoToActionSuggester/@EntryIndexRemoved" />
+  </component>
+  <component name="CMakePresetLoader">{
+  &quot;useNewFormat&quot;: true
+}</component>
+  <component name="CMakeProjectFlavorService">
+    <option name="flavorId" value="CMakePlainProjectFlavor" />
+  </component>
   <component name="CMakeReloadState">
     <option name="reloaded" value="true" />
   </component>
@@ -20,6 +32,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="064cb8dd-c74c-418a-a862-af96d67ded4c" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -49,6 +62,9 @@
     <option name="majorVersion" value="2021" />
     <option name="minorVersion" value="3.4" />
   </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 7
+}]]></component>
   <component name="ProjectId" id="26jMfXwUe9FDLoGIetQhQkpfVgG" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
@@ -59,14 +75,23 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.RadMigrateCodeStyle": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.cidr.known.project.marker": "true",
+    "RunOnceActivity.readMode.enableVisualFormatting": "true",
+    "RunOnceActivity.west.config.association.type.startup.service": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
     "cmake.loaded.for.project": "true",
-    "last_opened_file_path": "D:/DEV_TOOLS/Projets/HelloWord-Keyboard/2.Firmware/HelloWord-Keyboard-fw",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/document/keyboard/HelloWord-Keyboard/2.Firmware/HelloWord-Dynamic-fw",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
     "settings.editor.selected.configurable": "CMakeSettings",
     "structure.view.defaults.are.configured": "true",
     "vue.rearranger.settings.migration": "true"
@@ -99,13 +124,14 @@
       <option name="showConsole" value="true" />
       <method v="2" />
     </configuration>
-    <configuration default="true" type="CMakeRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true">
+    <configuration default="true" type="CLionExternalRunConfiguration" factoryName="Application" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true">
       <method v="2">
-        <option name="com.jetbrains.cidr.execution.CidrBuildBeforeRunTaskProvider$BuildBeforeRunTask" enabled="true" />
+        <option name="CLION.EXTERNAL.BUILD" enabled="true" />
       </method>
     </configuration>
     <configuration default="true" type="PythonConfigurationType" factoryName="Python">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <envs>
@@ -127,6 +153,7 @@
     </configuration>
     <configuration default="true" type="Tox" factoryName="Tox">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -136,7 +163,7 @@
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <method v="2" />
     </configuration>
-    <configuration name="HelloWord-Dynamic-fw.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="HelloWord-Dynamic-fw" TARGET_NAME="HelloWord-Dynamic-fw.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="HelloWord-Dynamic-fw" RUN_TARGET_NAME="HelloWord-Dynamic-fw.elf">
+    <configuration name="HelloWord-Dynamic-fw.elf" type="com.jetbrains.cidr.embedded.openocd.conf.type" factoryName="com.jetbrains.cidr.embedded.openocd.conf.factory" nameIsGenerated="true" REDIRECT_INPUT="false" ELEVATE="false" USE_EXTERNAL_CONSOLE="false" EMULATE_TERMINAL="false" PASS_PARENT_ENVS_2="true" PROJECT_NAME="HelloWord-Dynamic-fw" TARGET_NAME="HelloWord-Dynamic-fw.elf" CONFIG_NAME="Debug" version="1" RUN_TARGET_PROJECT_NAME="HelloWord-Dynamic-fw" RUN_TARGET_NAME="HelloWord-Dynamic-fw.elf">
       <openocd version="1" gdb-port="4444" telnet-port="1235" board-config="E:\OnWorking\_Private\HelloWord-dev\2.Firmware\HelloWord-Dynamic-fw\stlink.cfg" reset-type="INIT" download-type="UPDATED_ONLY">
         <debugger kind="GDB" isBundled="true" />
       </openocd>
@@ -146,6 +173,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="Autodetect">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -160,6 +188,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="Doctests">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -178,6 +207,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="Nosetests">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -193,6 +223,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="Twisted Trial">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -207,6 +238,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="Unittests">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -221,6 +253,7 @@
     </configuration>
     <configuration default="true" type="tests" factoryName="py.test">
       <module name="HelloWord-Dynamic-fw" />
+      <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
       <option name="SDK_HOME" value="" />
@@ -282,6 +315,7 @@
       <workItem from="1658499259416" duration="4546000" />
       <workItem from="1659172165877" duration="1356000" />
       <workItem from="1676859689038" duration="190000" />
+      <workItem from="1741836545567" duration="1084000" />
     </task>
     <servers />
   </component>
