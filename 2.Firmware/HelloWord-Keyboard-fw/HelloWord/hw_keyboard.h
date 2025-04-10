@@ -21,9 +21,9 @@ public:
 
 
     // static const uint8_t IO_NUMBER = 11 * 8; // Used 11 pcs 74HC165
-    static const uint8_t IO_NUMBER = 2 * 8; // Used 3 pcs 74HC165
+    static const uint8_t IO_NUMBER = 3 * 8; // Used 3 pcs 74HC165
     // static const uint8_t KEY_NUMBER = 82;
-    static const uint8_t KEY_NUMBER = 2 * 8;
+    static const uint8_t KEY_NUMBER = 3 * 8;
     // static const uint8_t TOUCHPAD_NUMBER = 6;
     static const uint8_t TOUCHPAD_NUMBER = 0;
     // static const uint8_t LED_NUMBER = 104;
@@ -84,19 +84,19 @@ public:
     uint8_t  GetTouchBarState(uint8_t _id = 0);
     void SetRgbBufferByID(uint8_t _keyId, Color_t _color, float _brightness = 1);
     int16_t keyMap[5][IO_NUMBER] = {
-//         {0,1,2,3,4,5,6,7, 8,
-//             9, 10, 11, 12, 13, 14, 15,
-//             16,17,18,19,20,21,22,23},
-// { PAD_NUM_LOCK,PAD_SLASH,PAD_ASTERISK,PAD_MINUS,PAD_NUM_7,PAD_NUM_8,
-//     PAD_NUM_9,PAD_PLUS,PAD_NUM_4,PAD_NUM_5,PAD_NUM_6,PAD_NUM_1,PAD_NUM_2,
-//     PAD_NUM_3,PAD_NUM_0,PAD_PERIOD,PAD_ENTER,A,B,C,D,E,F,G}
-
-{0,1,2,3,4,5,6,7, 8,
-    9, 10, 11, 12, 13, 14, 15,
-    },
+        {0,1,2,3,4,5,6,7, 8,
+            9, 10, 11, 12, 13, 14, 15,
+            16,17,18,19,20,21,22,23},
 { PAD_NUM_LOCK,PAD_SLASH,PAD_ASTERISK,PAD_MINUS,PAD_NUM_7,PAD_NUM_8,
-PAD_NUM_9,PAD_PLUS,PAD_NUM_4,PAD_NUM_5,PAD_NUM_6,PAD_NUM_1,PAD_NUM_2,
-PAD_NUM_3,PAD_NUM_0,PAD_PERIOD}
+    PAD_NUM_9,PAD_PLUS,PAD_NUM_4,PAD_NUM_5,PAD_NUM_6,PAD_NUM_1,PAD_NUM_2,
+    PAD_NUM_3,PAD_NUM_0,PAD_PERIOD,PAD_ENTER,A,B,C,D,E,F,G}
+
+// {0,1,2,3,4,5,6,7, 8,
+//     9, 10, 11, 12, 13, 14, 15,
+//     },
+// { PAD_NUM_LOCK,PAD_SLASH,PAD_ASTERISK,PAD_MINUS,PAD_NUM_7,PAD_NUM_8,
+// PAD_NUM_9,PAD_PLUS,PAD_NUM_4,PAD_NUM_5,PAD_NUM_6,PAD_NUM_1,PAD_NUM_2,
+// PAD_NUM_3,PAD_NUM_0,PAD_PERIOD}
         // {67,61,60,58,59,52,55,51,50,49,48,47,46,3,
         //     80,81,64,57,62,63,53,54,45,44,40,31,26,18,2,
         //     19,70,71,66,65,56,36,37,38,39,43,42,41,28,1,
