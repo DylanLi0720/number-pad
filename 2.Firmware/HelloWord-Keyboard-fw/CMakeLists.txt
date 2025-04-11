@@ -62,6 +62,7 @@ include_directories(
         Drivers/CMSIS/Device/ST/STM32F1xx/Include
         Drivers/CMSIS/Include
         UserApp
+        UserApp/LCD
 )
 
 add_definitions(-DUSE_HAL_DRIVER -DSTM32F103xB)

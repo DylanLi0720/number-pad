@@ -2,8 +2,11 @@
 
 #include "common_inc.h"
 #include "configurations.h"
+#include "lcd.h"
 #include "HelloWord/hw_keyboard.h"
 #include "math.h"
+#include "lcd_init.h"
+#include "pic.h"
 
 #define PERIOD 256
 #define PI 3.1415
@@ -16,6 +19,10 @@ static bool isReceiveSuccess = false;
 /* Main Entry ----------------------------------------------------------------*/
 void Main()
 {
+    uint16_t time = 0;
+    uint8_t chinese[] = "中景园电子";
+    uint8_t LCD_Diameter[] = "LCD_Diameter:";
+    uint8_t Increaseing_Nun[] = "Increaseing Nun:";
     EEPROM eeprom;
     eeprom.Pull(0, config);
     if (config.configStatus != CONFIG_OK)
@@ -30,12 +37,30 @@ void Main()
         eeprom.Push(0, config);
     }
 
+    //LCD Init
+    LCD_Init();
+    LCD_Fill(0,0,LCD_W,LCD_H,WHITE);
+    /*---- This is a demo LCD display ----*/
+    LCD_ShowChinese(30,40,chinese,RED,WHITE,32,0);
+    LCD_ShowString(32,80,LCD_Diameter,RED,WHITE,16,0);
+    LCD_ShowIntNum(134,80,LCD_W,3,RED,WHITE,16);
+    LCD_ShowString(32,100,Increaseing_Nun,RED,WHITE,16,0);
+    for(uint8_t j=0; j<3; j++)
+    {
+        for(uint8_t i=0; i<6; i++)
+        {
+            LCD_ShowPicture(40*i,120+j*40,40,40,gImage_1);
+        }
+    }
     // Keyboard Report Start
     HAL_TIM_Base_Start_IT(&htim4);
 
 
     while (true)
     {
+        if (time++ % 100 == 0)
+            LCD_ShowIntNum(134,80,time / 100,3,RED,WHITE,16);
+        // LCD_ShowFloatNum1(160,100,time,4,RED,WHITE,16);
         /*---- This is a demo RGB effect ----*/
         static uint32_t t = 1;
         static uint8_t r, g, b;

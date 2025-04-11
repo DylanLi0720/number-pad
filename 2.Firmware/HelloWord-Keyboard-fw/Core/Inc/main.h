@@ -58,6 +58,14 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define TFT_SCL_Pin GPIO_PIN_0
+#define TFT_SCL_GPIO_Port GPIOA
+#define TFT_SDA_Pin GPIO_PIN_1
+#define TFT_SDA_GPIO_Port GPIOA
+#define TFT_RES_Pin GPIO_PIN_2
+#define TFT_RES_GPIO_Port GPIOA
+#define TFT_DC_Pin GPIO_PIN_3
+#define TFT_DC_GPIO_Port GPIOA
 #define FN_Pin GPIO_PIN_0
 #define FN_GPIO_Port GPIOB
 #define CE_Pin GPIO_PIN_3
