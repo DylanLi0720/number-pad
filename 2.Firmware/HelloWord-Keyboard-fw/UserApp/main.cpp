@@ -16,13 +16,12 @@ HWKeyboard keyboard(&hspi1);
 
 static bool isSoftWareControlColor = false;
 static bool isReceiveSuccess = false;
+static uint16_t times = 0;
+
 /* Main Entry ----------------------------------------------------------------*/
 void Main()
 {
-    uint16_t time = 0;
-    uint8_t chinese[] = "中景园电子";
-    uint8_t LCD_Diameter[] = "LCD_Diameter:";
-    uint8_t Increaseing_Nun[] = "Increaseing Nun:";
+    bool eyeBlinkFlag = false;
     EEPROM eeprom;
     eeprom.Pull(0, config);
     if (config.configStatus != CONFIG_OK)
@@ -41,25 +40,21 @@ void Main()
     LCD_Init();
     LCD_Fill(0,0,LCD_W,LCD_H,WHITE);
     /*---- This is a demo LCD display ----*/
-    LCD_ShowChinese(30,40,chinese,RED,WHITE,32,0);
-    LCD_ShowString(32,80,LCD_Diameter,RED,WHITE,16,0);
-    LCD_ShowIntNum(134,80,LCD_W,3,RED,WHITE,16);
-    LCD_ShowString(32,100,Increaseing_Nun,RED,WHITE,16,0);
-    for(uint8_t j=0; j<3; j++)
-    {
-        for(uint8_t i=0; i<6; i++)
-        {
-            LCD_ShowPicture(40*i,120+j*40,40,40,gImage_1);
-        }
-    }
+    LCD_ShowPicture(20,0,200,200,gImage_1);
     // Keyboard Report Start
     HAL_TIM_Base_Start_IT(&htim4);
 
 
     while (true)
     {
-        if (time++ % 100 == 0)
-            LCD_ShowIntNum(134,80,time / 100,3,RED,WHITE,16);
+        if (times > 2000)// It is not possible to capture the exact time every time because of the RGB effect
+        {
+            eyeBlinkFlag = !eyeBlinkFlag;
+            times = 0;
+            if (eyeBlinkFlag)LCD_ShowPicture(89,37,32,39,gImage_yanjing);
+            else LCD_ShowPicture(20,0,200,200,gImage_1);
+        }
+
         // LCD_ShowFloatNum1(160,100,time,4,RED,WHITE,16);
         /*---- This is a demo RGB effect ----*/
         static uint32_t t = 1;
@@ -102,6 +97,7 @@ void Main()
 /* Event Callbacks -----------------------------------------------------------*/
 extern "C" void OnTimerCallback() // 1000Hz callback
 {
+    times++;
     keyboard.ScanKeyStates();  // Around 40us use 4MHz SPI clk
     keyboard.ApplyDebounceFilter(100);
     keyboard.Remap(1);  // When Fn pressed use layer-2
