@@ -47,12 +47,12 @@ void Main()
 
     while (true)
     {
-        if (times > 2000)// It is not possible to capture the exact time every time because of the RGB effect
+        if (times > 1000)// It is not possible to capture the exact time every time because of the RGB effect
         {
             eyeBlinkFlag = !eyeBlinkFlag;
             times = 0;
             if (eyeBlinkFlag)LCD_ShowPicture(89,37,32,39,gImage_yanjing);
-            else LCD_ShowPicture(20,0,200,200,gImage_1);
+            else LCD_ShowPicture(86,39,37,40,gImage_yanjing2);
         }
 
         // LCD_ShowFloatNum1(160,100,time,4,RED,WHITE,16);
@@ -102,13 +102,13 @@ extern "C" void OnTimerCallback() // 1000Hz callback
     keyboard.ApplyDebounceFilter(100);
     keyboard.Remap(1);  // When Fn pressed use layer-2
 
-    if (keyboard.FnPressed())
+    if (keyboard.MinPlusPressed())
     {
         // do something...
         // or trigger some keys...
         // keyboard.Press(HWKeyboard::LEFT_CTRL);
         // keyboard.Press(HWKeyboard::V);
-        // isSoftWareControlColor = !isSoftWareControlColor;
+        isSoftWareControlColor = !isSoftWareControlColor;
     }
     // Report HID key states
     USBD_CUSTOM_HID_SendReport(&hUsbDeviceFS,

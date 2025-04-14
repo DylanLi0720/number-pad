@@ -9,7 +9,7 @@ public:
     explicit HWKeyboard(SPI_HandleTypeDef* _spi) :
         spiHandle(_spi)
     {
-        scanBuffer = &spiBuffer[1];
+        scanBuffer = &spiBuffer[1];//舍弃第一个脏数据
 
         // Enable clock
         HAL_GPIO_WritePin(CE_GPIO_Port,CE_Pin,GPIO_PIN_RESET);
@@ -76,7 +76,7 @@ public:
     void ApplyDebounceFilter(uint32_t _filterTimeUs = 100);
     uint8_t* Remap(uint8_t _layer = 1);
     void SyncLights();
-    bool FnPressed();
+    bool MinPlusPressed();
     bool KeyPressed(KeyCode_t _key);
     void Press(KeyCode_t _key);
     void Release(KeyCode_t _key);

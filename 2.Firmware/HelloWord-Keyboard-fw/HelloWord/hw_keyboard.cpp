@@ -95,10 +95,18 @@ uint8_t* HWKeyboard::Remap(uint8_t _layer)
 }
 
 
-bool HWKeyboard::FnPressed()
+bool HWKeyboard::MinPlusPressed()
 {
-    // return true;
-    return remapBuffer[0] & 0x80;
+    uint8_t minusPressed = remapBuffer[0] & 0x10,
+        plusPressed = remapBuffer[0] & 0x01;
+    if (minusPressed && plusPressed)
+    {
+        DelayUs(1000);
+        minusPressed = remapBuffer[0] & 0x10;
+        plusPressed = remapBuffer[0] & 0x01;
+        if (minusPressed && plusPressed) return true;
+    }
+    return false;
 }
 
 
