@@ -10,6 +10,7 @@
 
 #define PERIOD 256
 #define PI 3.1415
+#define DISPLAYUSAGI 0
 /* Component Definitions -----------------------------------------------------*/
 KeyboardConfig_t config;
 HWKeyboard keyboard(&hspi1);
@@ -40,20 +41,41 @@ void Main()
     LCD_Init();
     LCD_Fill(0,0,LCD_W,LCD_H,WHITE);
     /*---- This is a demo LCD display ----*/
+#if DISPLAYUSAGI
+    LCD_ShowPicture(41, 25, 158, 190, gImage_usagi);
+#else
     LCD_ShowPicture(20,0,200,200,gImage_1);
+#endif
+
     // Keyboard Report Start
     HAL_TIM_Base_Start_IT(&htim4);
 
 
     while (true)
     {
-        if (times > 1000)// It is not possible to capture the exact time every time because of the RGB effect
+        if (times > 800)// It is not possible to capture the exact time every time because of the RGB effect
         {
             eyeBlinkFlag = !eyeBlinkFlag;
             times = 0;
+#if DISPLAYUSAGI
+            if (eyeBlinkFlag)
+            {
+                LCD_Fill(90,25,112,39,WHITE);
+                LCD_Fill(137,25,156,39,WHITE);
+                LCD_ShowPicture(64,39,113,56,gImage_openEars);
+            }
+            else
+            {
+                LCD_Fill(50,40,70,55,WHITE);
+                LCD_Fill(170,40,200,58,WHITE);
+                LCD_ShowPicture(67,26,106,69,gImage_closeEars);
+            }
+#else
             if (eyeBlinkFlag)LCD_ShowPicture(89,37,32,39,gImage_yanjing);
             else LCD_ShowPicture(86,39,37,40,gImage_yanjing2);
+#endif
         }
+
 
         // LCD_ShowFloatNum1(160,100,time,4,RED,WHITE,16);
         /*---- This is a demo RGB effect ----*/
@@ -102,7 +124,7 @@ extern "C" void OnTimerCallback() // 1000Hz callback
     keyboard.ApplyDebounceFilter(100);
     keyboard.Remap(1);  // When Fn pressed use layer-2
 
-    if (keyboard.MinPlusPressed())
+    if (keyboard.KeyPressed(HWKeyboard::PAD_MINUS) && keyboard.KeyPressed(HWKeyboard::PAD_PLUS))
     {
         // do something...
         // or trigger some keys...

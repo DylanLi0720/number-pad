@@ -132,6 +132,25 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
         0x91, 0x03,       //   Output (Constant),
 #endif
         0xC0  ,                 //   End Collection
+#if 0
+  // 新增音量控制报告（Report ID = 2）
+0x05, 0x0C,         // Usage Page (Consumer Devices)  -- 关键！Consumer Page用于多媒体控制
+0x09, 0x01,         // Usage (Consumer Control)       -- 声明这是一个消费类控制设备
+0xA1, 0x01,         // Collection (Application)        -- 开启应用集合
+0x85, 0x02,         //   Report ID (2)                -- 分配Report ID为2
+0x15, 0x00,         //   Logical Minimum (0)          -- 逻辑最小值
+0x25, 0x01,         //   Logical Maximum (1)          -- 逻辑最大值（布尔类型）
+0x75, 0x01,         //   Report Size (1 bit)          -- 每字段占1位
+0x95, 0x03,         //   Report Count (3 fields)      -- 定义3个字段（音量+、音量-、静音）
+0x09, 0xE9,         //   Usage (Volume Increment)     -- 音量+
+0x09, 0xEA,         //   Usage (Volume Decrement)     -- 音量-
+0x09, 0xE2,         //   Usage (Mute)                -- 静音
+0x81, 0x02,         //   Input (Data, Variable, Absolute) -- 输入报告
+0x95, 0x01,         //   Report Count (1)             -- 填充剩余5位（确保总长度为1字节）
+0x81, 0x03,         //   Input (Constant)             -- 常量填充
+0xC0,               // End Collection                 -- 结束集合
+
+#endif
 
 #if 1
         //	RAW HID
@@ -139,7 +158,7 @@ __ALIGN_BEGIN static uint8_t CUSTOM_HID_ReportDesc_FS[USBD_CUSTOM_HID_REPORT_DES
 	0x0A, LSB(RAWHID_USAGE), MSB(RAWHID_USAGE),
 
 	0xA1, 0x01,				// Collection 0x01
-    0x85, 0x02,             // REPORT_ID (3)
+    0x85, 0x03,             // REPORT_ID (3)
 	0x75, 0x08,				// report size = 8 bits
 	0x15, 0x00,				// logical minimum = 0
 	0x26, 0xFF, 0x00,		// logical maximum = 255

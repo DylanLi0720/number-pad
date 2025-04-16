@@ -146,6 +146,9 @@ uint8_t* HWKeyboard::GetHidReportBuffer(uint8_t _reportId)
             hidBuffer[0] = 1;
             return hidBuffer;
         case 2:
+            // hidBuffer[0] = 2;
+            return hidBuffer;
+        case 3:
             hidBuffer[KEY_REPORT_SIZE] = 2;
             return hidBuffer + KEY_REPORT_SIZE;
         default:
